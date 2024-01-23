@@ -1,0 +1,51 @@
+<Disciplina@MDTextField>:
+    mode: "outlined"
+    theme_text_color: "Custom"
+    text_color_focus: "black"
+    theme_line_color: "Custom"
+    line_color_normal: "white"
+    max_text_length: 20
+#    theme_bg_color: "Custom"
+#    fill_color_focus: "white"
+    size_hint: .7, None
+    multiline: False
+
+<Time@MDLabel>:
+    size_hint: .3, None
+    valign: 'center'
+    halign: 'center'
+    bold: True
+
+#Conteiner que possui a hora, disciplina
+<Hour>
+    style: 'outlined'
+    size_hint: None, None
+    height: "60dp"
+    pos_hint: {"center_x": .5}
+    MDRelativeLayout:
+        Time:
+            pos_hint: {"left": .95, 'center_y': .5}
+            text: root.hora
+            height: "30dp"
+        Disciplina:
+            pos_hint: {"right": .95, 'center_y': .5}
+            height: root.height
+            text: root.disciplina
+
+<Day>
+    size_hint: None, None
+    spacing: '10dp'
+    height: self.minimum_height
+    orientation: 'vertical'
+
+<Content>
+    size_hint: None, None
+    size: self.minimum_width, self.minimum_height
+
+<Tabs>
+    md_bg_color: app.theme_cls.backgroundColor
+    Scroll:
+        do_scroll_x: True
+        do_scroll_y: True
+        Content:
+
