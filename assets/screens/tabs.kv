@@ -1,42 +1,40 @@
 <Disciplina@MDTextField>:
     mode: "outlined"
     theme_text_color: "Custom"
-    text_color_focus: "black"
+    text_color_focus: "blue"
     theme_line_color: "Custom"
-    line_color_normal: "white"
-    max_text_length: 20
-#    theme_bg_color: "Custom"
-#    fill_color_focus: "white"
-    size_hint: .7, None
+    line_color_normal: [.5, .5, .5, 1]
+    theme_bg_color: "Custom"
+    fill_color_focus: "gray"
     multiline: False
+    size_hint: .8, None
+    height: '40sp'
 
-<Time@MDLabel>:
-    size_hint: .3, None
-    valign: 'center'
-    halign: 'center'
-    bold: True
-
-#Conteiner que possui a hora, disciplina
-<Hour>
-    style: 'outlined'
-    size_hint: None, None
-    height: "60dp"
-    pos_hint: {"center_x": .5}
-    MDRelativeLayout:
-        Time:
-            pos_hint: {"left": .95, 'center_y': .5}
-            text: root.hora
-            height: "30dp"
-        Disciplina:
-            pos_hint: {"right": .95, 'center_y': .5}
-            height: root.height
-            text: root.disciplina
+<MyButton>
+    icon: "pencil-outline"
+    style: "standard"
+#    style: 'outlined'
+    size_hint: .2, None
+    height: '50sp'
+    pos_hint: {"center_x": .5, "center_y": .5}
+#    theme_shadow_color: "Custom"
+#    shadow_color: "red"
+#    MDButtonIcon:
+#        icon:'plus'
+#        theme_icon_color: "Custom"
+#        icon_color: "green"
+#    MDButtonText:
+#        text: 'info'
+#        theme_text_color: "Custom"
+#        text_color: "red"
+#        font_style: 'Title'
 
 <Day>
     size_hint: None, None
-    spacing: '10dp'
+    spacing: '25dp'
+    padding: '20dp'
     height: self.minimum_height
-    orientation: 'vertical'
+    orientation: 'lr-tb'
 
 <Content>
     size_hint: None, None

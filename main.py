@@ -23,12 +23,10 @@ class MainApp(MDApp):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-
     def build(self):
-
         self.theme_cls.theme_style = 'Light'
         self.theme_cls.backgroundColor = 'white'
-        # self.theme_cls.device_orientation = ''
+        self.theme_cls.device_orientation = 'vertical'
         self.theme_cls.primaryContainerColor = 'gray'
         self.theme_cls.secondaryContainerColor = 'black'
         self.theme_cls.material_style = 'M3'
