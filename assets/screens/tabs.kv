@@ -30,20 +30,16 @@
 #        font_style: 'Title'
 
 <Day>
-    size_hint: None, None
+    id: root.name
+    size_hint: 1., None
     spacing: '25dp'
     padding: '20dp'
     height: self.minimum_height
     orientation: 'lr-tb'
 
-<Content>
-    size_hint: None, None
-    size: self.minimum_width, self.minimum_height
 
 <Tabs>
     md_bg_color: app.theme_cls.backgroundColor
     Scroll:
-        do_scroll_x: True
+        do_scroll_x: False
         do_scroll_y: True
-        Content:
-

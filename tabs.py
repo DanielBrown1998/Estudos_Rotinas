@@ -1,14 +1,11 @@
 from kivy.lang import Builder
-from kivy.metrics import dp, sp
 from kivy.properties import StringProperty
-from kivymd.uix.button import MDButton, MDFabButton
-from kivymd.uix.label import MDLabel
+from kivymd.uix.button import MDFabButton
 from kivymd.uix.screen import MDScreen
-from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.scrollview import MDScrollView
 from kivy.core.window import Window
 from kivymd.uix.stacklayout import MDStackLayout
-from kivymd.uix.textfield import MDTextField, MDTextFieldHintText, MDTextFieldTrailingIcon, MDTextFieldMaxLengthText
+from kivymd.uix.textfield import MDTextField, MDTextFieldHintText, MDTextFieldMaxLengthText
 
 Builder.load_file(r'./assets/screens/tabs.kv')
 
@@ -22,7 +19,6 @@ class Disciplina(MDTextField):
 
 
 class Day(MDStackLayout):
-    week = StringProperty()
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -38,9 +34,7 @@ class Day(MDStackLayout):
                     MDTextFieldMaxLengthText(
                         max_text_length=20,
                     ),
-                    text=self.week,
-                    # disciplina=self.id,
-                    # width=Window.size[0]*.4
+                    text='horário vago',
                 )
             )
             my_button = MyButton(
@@ -51,39 +45,16 @@ class Day(MDStackLayout):
             )
 
 
-class Content(MDBoxLayout):
-    week = StringProperty()
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        print('content')
-        week = 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sabado', 'domingo'
-        for day in week:
-            self.add_widget(
-                MDLabel(
-                    text=self.week,
-                    valign='center',
-                    halign='center',
-                    bold=True,
-                    font_size=sp(32),
-                    padding=dp(10),
-                    size_hint_y=None,
-                    height=dp(50),
-
-                )
-            )
-            self.add_widget(
-                Day(
-                    week=day,
-                    id=day,
-                    width=Window.size[0]
-                )
-            )
-
 class Scroll(MDScrollView):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+        self.add_widget(
+            Day(
+                width=Window.size[0]
+            )
+        )
 
     def on_scroll_start(self, touch, check_children=True):
         if super().on_scroll_start(touch):
@@ -102,6 +73,7 @@ class Scroll(MDScrollView):
 
 
 class Tabs(MDScreen):
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        print('tabs')
+        print(self.name)

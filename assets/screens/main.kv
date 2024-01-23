@@ -1,4 +1,68 @@
 #:import Tabs tabs.Tabs
+<BaseMDNavigationItem>
+
+    MDNavigationItemIcon:
+        icon: root.icon
+
+    MDNavigationItemLabel:
+        text: root.text
+
 
 <Principal>
-    Tabs:
+    orientation: 'vertical'
+    md_bg_color: app.theme_cls.backgroundColor
+    MDLabel:
+        text: root.ids.screen_manager.current
+        halign: 'center'
+        valign: 'center'
+        size_hint: 1., .1
+        md_bg_color: app.theme_cls.primaryContainerColor
+
+    MDScreenManager:
+        id: screen_manager
+        Tabs:
+            name: 'segunda'
+        Tabs:
+            name: 'terça'
+        Tabs:
+            name: 'quarta'
+        Tabs:
+            name: 'quinta'
+        Tabs:
+            name: 'sexta'
+        Tabs:
+            name: 'sabado'
+        Tabs:
+            name: 'domingo'
+    Nav:
+        id: nav
+        on_switch_tabs: app.on_switch_tabs(*args)
+
+        BaseMDNavigationItem:
+            icon: "circle" if root.ids.screen_manager.current == self.text else "circle-outline"
+            text: "segunda"
+            active: True
+
+        BaseMDNavigationItem:
+            icon: "circle" if root.ids.screen_manager.current == self.text else "circle-outline"
+            text: "terça"
+
+        BaseMDNavigationItem:
+            icon: "circle" if root.ids.screen_manager.current == self.text else "circle-outline"
+            text: "quarta"
+
+        BaseMDNavigationItem:
+            icon: "circle" if root.ids.screen_manager.current == self.text else "circle-outline"
+            text: "quinta"
+
+        BaseMDNavigationItem:
+            icon: "circle" if root.ids.screen_manager.current == self.text else "circle-outline"
+            text: "sexta"
+
+        BaseMDNavigationItem:
+            icon: "circle" if root.ids.screen_manager.current == self.text else "circle-outline"
+            text: "sabado"
+
+        BaseMDNavigationItem:
+            icon: "circle" if root.ids.screen_manager.current == self.text else "circle-outline"
+            text: "domingo"
