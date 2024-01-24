@@ -1,6 +1,7 @@
 from kivy.lang import Builder
 from kivy.properties import StringProperty, NumericProperty
-from kivymd.uix.behaviors import ScaleBehavior, HoverBehavior, RotateBehavior
+from kivy.uix.behaviors import ButtonBehavior
+from kivymd.uix.behaviors import ScaleBehavior, HoverBehavior, RotateBehavior, CommonElevationBehavior
 from kivymd.uix.button import MDFabButton
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.scrollview import MDScrollView
@@ -11,7 +12,12 @@ from kivy.animation import Animation
 Builder.load_file(r'./assets/screens/tabs.kv')
 
 
-class MyButton(MDFabButton, ScaleBehavior, HoverBehavior, RotateBehavior):
+class MyButton(
+    MDFabButton,
+    ScaleBehavior,
+    HoverBehavior,
+   RotateBehavior
+):
 
     scale_value_x = NumericProperty(.9)
     scale_value_y = NumericProperty(.9)
@@ -38,6 +44,8 @@ class MyButton(MDFabButton, ScaleBehavior, HoverBehavior, RotateBehavior):
             t='in_out_quad'
         )
         anim.start(self)
+
+pass
 
 
 class Disciplina(MDTextField):

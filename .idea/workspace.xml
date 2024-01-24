@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8df999a6-b8d5-4d7f-bd73-51999ac5ae63" name="Changes" comment="refatorando">
+    <list default="true" id="8df999a6-b8d5-4d7f-bd73-51999ac5ae63" name="Changes" comment="update palette">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/screens/main.kv" beforeDir="false" afterPath="$PROJECT_DIR$/assets/screens/main.kv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/screens/tabs.kv" beforeDir="false" afterPath="$PROJECT_DIR$/assets/screens/tabs.kv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tabs.py" beforeDir="false" afterPath="$PROJECT_DIR$/tabs.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -178,11 +176,20 @@
       <option name="project" value="LOCAL" />
       <updated>1706048322968</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="update palette">
+      <option name="closed" value="true" />
+      <created>1706132062874</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1706132062876</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refatorando" />
-    <option name="LAST_COMMIT_MESSAGE" value="refatorando" />
+    <MESSAGE value="update palette" />
+    <option name="LAST_COMMIT_MESSAGE" value="update palette" />
   </component>
 </project>
