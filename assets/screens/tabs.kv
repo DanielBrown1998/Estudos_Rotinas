@@ -1,11 +1,12 @@
 <Disciplina@MDTextField>:
     mode: "outlined"
     theme_text_color: "Custom"
-    text_color_focus: "blue"
+    text_color_normal: app.color_font
+    text_color_focus: app.color_font_focus
     theme_line_color: "Custom"
-    line_color_normal: [.5, .5, .5, 1]
+    line_color_normal: app.color_font
     theme_bg_color: "Custom"
-    fill_color_focus: "gray"
+    fill_color_normal: app.background
     multiline: False
     size_hint: .8, None
     height: '40sp'
@@ -14,23 +15,19 @@
     icon: "pencil-outline"
     style: "standard"
 #    style: 'outlined'
-    size_hint: .2, None
+    size_hint: None, None
+    width: '50sp'
     height: '50sp'
-    pos_hint: {"center_x": .5, "center_y": .5}
-#    theme_shadow_color: "Custom"
-#    shadow_color: "red"
-#    MDButtonIcon:
-#        icon:'plus'
-#        theme_icon_color: "Custom"
-#        icon_color: "green"
-#    MDButtonText:
-#        text: 'info'
-#        theme_text_color: "Custom"
-#        text_color: "red"
-#        font_style: 'Title'
+#    pos_hint: {"center_x": .5, "center_y": .5}
+    theme_shadow_color: "Custom"
+    shadow_color: app.color_shadow
+    theme_icon_color: "Custom"
+    icon_color: app.background
+    color_map: 'secondary'
 
 <Day>
     id: root.name
+    md_bg_color: app.background
     size_hint: 1., None
     spacing: '25dp'
     padding: '20dp'
@@ -39,7 +36,6 @@
 
 
 <Tabs>
-    md_bg_color: app.theme_cls.backgroundColor
     Scroll:
         do_scroll_x: False
         do_scroll_y: True

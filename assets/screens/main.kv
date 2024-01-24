@@ -1,4 +1,5 @@
 #:import Tabs tabs.Tabs
+
 <BaseMDNavigationItem>
 
     MDNavigationItemIcon:
@@ -10,16 +11,25 @@
 
 <Principal>
     orientation: 'vertical'
-    md_bg_color: app.theme_cls.backgroundColor
     MDLabel:
         text: root.ids.screen_manager.current
+        theme_text_color: 'Custom'
+        text_color: app.background
+        theme_font_size: "Custom"
+        font_size: "30sp"
+        bold: True
         halign: 'center'
         valign: 'center'
-        size_hint: 1., .1
-        md_bg_color: app.theme_cls.primaryContainerColor
+        size_hint: 1., None
+        height: '50dp'
+        theme_bg_color: "Custom"
+        md_bg_color: app.background_two
+
 
     MDScreenManager:
         id: screen_manager
+        md_bg_color: app.background
+
         Tabs:
             name: 'segunda'
         Tabs:
@@ -37,7 +47,7 @@
     Nav:
         id: nav
         on_switch_tabs: app.on_switch_tabs(*args)
-
+        indicator_color: app.background_two
         BaseMDNavigationItem:
             icon: "circle" if root.ids.screen_manager.current == self.text else "circle-outline"
             text: "segunda"

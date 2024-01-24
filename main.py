@@ -1,5 +1,5 @@
 from kivy.lang import Builder
-from kivy.properties import StringProperty
+from kivy.properties import StringProperty, ColorProperty
 from kivymd.app import MDApp
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.navigationbar import MDNavigationBar, MDNavigationItem
@@ -25,7 +25,15 @@ class Principal(MDBoxLayout):
 # class principal
 class MainApp(MDApp):
 
+    # font_file
     KIVY_HOME = Path(__file__).parent
+
+    # Paleta
+    color_font_focus = ColorProperty('#234CAD')
+    color_shadow = ColorProperty('#31477A')
+    background = ColorProperty('#FFFFFF')
+    background_two = ColorProperty('#2B3347')
+    color_font = ColorProperty('#292C33')
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -42,11 +50,8 @@ class MainApp(MDApp):
 
     def build(self):
         self.theme_cls.theme_style = 'Light'
-        self.theme_cls.backgroundColor = 'white'
-        self.theme_cls.device_orientation = 'vertical'
-        self.theme_cls.primaryContainerColor = 'gray'
-        self.theme_cls.secondaryContainerColor = 'black'
         self.theme_cls.material_style = 'M3'
+        self.theme_cls.dynamic_color = True
         self.title = 'Studie'
         Builder.load_file('assets/screens/main.kv')
         return Principal()
