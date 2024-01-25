@@ -4,15 +4,19 @@ from kivymd.app import MDApp
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.navigationbar import MDNavigationBar, MDNavigationItem
 from pathlib import Path
+from tabs import Tabs
 
 
 class BaseMDNavigationItem(MDNavigationItem):
     icon = StringProperty()
     text = StringProperty()
+    title = StringProperty()
 
 
 class Nav(MDNavigationBar):
-    pass
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
 
 # Widget de gerenciamento
@@ -34,6 +38,15 @@ class MainApp(MDApp):
     background_two = ColorProperty('#2B3347')
     color_font = ColorProperty('#292C33')
 
+    def on_start(self):
+        super().on_start()
+
+    def on_resume(self):
+        super().on_resume()
+
+    def on_pause(self):
+        super().on_pause()
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
@@ -46,6 +59,7 @@ class MainApp(MDApp):
     ):
         self.root.ids.screen_manager.current = item_text
 
+
     def build(self):
         self.theme_cls.theme_style = 'Light'
         self.theme_cls.material_style = 'M3'
@@ -56,4 +70,5 @@ class MainApp(MDApp):
 
 
 if __name__ == '__main__':
-    MainApp().run()
+    app = MainApp()
+    app.run()

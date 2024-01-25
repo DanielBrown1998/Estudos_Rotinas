@@ -1,4 +1,5 @@
 #:import Tabs tabs.Tabs
+#:import Info intro.Info
 
 <BaseMDNavigationItem>
 
@@ -12,6 +13,7 @@
 <Principal>
     orientation: 'vertical'
     MDLabel:
+        id: title
         text: root.ids.screen_manager.current
         theme_text_color: 'Custom'
         text_color: app.background
@@ -24,13 +26,11 @@
         height: '50dp'
         theme_bg_color: "Custom"
         md_bg_color: app.background_two
-
-
-
     MDScreenManager:
         id: screen_manager
         md_bg_color: app.background
-
+        Info:
+            name: 'info'
         Tabs:
             name: 'segunda'
         Tabs:
@@ -51,29 +51,32 @@
         indicator_color: app.background_two
         BaseMDNavigationItem:
             icon: "circle" if root.ids.screen_manager.current == self.text else "circle-outline"
-            text: "segunda"
+            text: "info"
             active: True
+        BaseMDNavigationItem:
+            icon: "circle" if root.ids.screen_manager.current == self.text else "circle-outline"
+            text: 'segunda'
 
         BaseMDNavigationItem:
             icon: "circle" if root.ids.screen_manager.current == self.text else "circle-outline"
-            text: "terça"
+            text: 'terça'
 
         BaseMDNavigationItem:
             icon: "circle" if root.ids.screen_manager.current == self.text else "circle-outline"
-            text: "quarta"
+            text: 'quarta'
 
         BaseMDNavigationItem:
             icon: "circle" if root.ids.screen_manager.current == self.text else "circle-outline"
-            text: "quinta"
+            text: 'quinta'
 
         BaseMDNavigationItem:
             icon: "circle" if root.ids.screen_manager.current == self.text else "circle-outline"
-            text: "sexta"
+            text: 'sexta'
 
         BaseMDNavigationItem:
             icon: "circle" if root.ids.screen_manager.current == self.text else "circle-outline"
-            text: "sabado"
+            text: 'sabado'
 
         BaseMDNavigationItem:
             icon: "circle" if root.ids.screen_manager.current == self.text else "circle-outline"
-            text: "domingo"
+            text: 'domindo'

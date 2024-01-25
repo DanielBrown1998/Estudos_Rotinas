@@ -1,6 +1,5 @@
 from kivy.lang import Builder
 from kivy.properties import StringProperty, NumericProperty
-from kivy.uix.behaviors import ButtonBehavior
 from kivymd.uix.behaviors import ScaleBehavior, HoverBehavior, RotateBehavior, CommonElevationBehavior
 from kivymd.uix.button import MDFabButton
 from kivymd.uix.screen import MDScreen
@@ -16,14 +15,11 @@ class MyButton(
     MDFabButton,
     ScaleBehavior,
     HoverBehavior,
-   RotateBehavior
+    RotateBehavior
 ):
 
     scale_value_x = NumericProperty(.9)
     scale_value_y = NumericProperty(.9)
-
-    # def on_press(self, *args) -> None:
-    #     super().on_press(*args)
 
     def on_enter(self) -> None:
         anim = Animation(
@@ -45,8 +41,6 @@ class MyButton(
         )
         anim.start(self)
 
-pass
-
 
 class Disciplina(MDTextField):
     hora = StringProperty()
@@ -58,7 +52,7 @@ class Day(MDStackLayout):
         super().__init__(**kwargs)
         print('day')
 
-        for time in range(8, 20):
+        for time in range(6, 24):
             self.add_widget(
                 Disciplina(
                     MDTextFieldHintText(
@@ -111,3 +105,4 @@ class Tabs(MDScreen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         print(self.name)
+
