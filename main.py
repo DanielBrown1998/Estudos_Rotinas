@@ -4,7 +4,6 @@ from kivymd.app import MDApp
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.navigationbar import MDNavigationBar, MDNavigationItem
 from pathlib import Path
-from kivymd.icon_definitions import md_icons
 
 
 class BaseMDNavigationItem(MDNavigationItem):
@@ -37,7 +36,6 @@ class MainApp(MDApp):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # print(*[key for key in md_icons.keys()])
 
     def on_switch_tabs(
             self,
