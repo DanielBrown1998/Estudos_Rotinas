@@ -1,6 +1,7 @@
 from kivy.lang import Builder
+from kivy.metrics import dp
 from kivy.properties import StringProperty, NumericProperty
-from kivymd.uix.behaviors import ScaleBehavior, HoverBehavior, RotateBehavior, CommonElevationBehavior
+from kivymd.uix.behaviors import ScaleBehavior, HoverBehavior, RotateBehavior
 from kivymd.uix.button import MDFabButton
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.scrollview import MDScrollView
@@ -33,7 +34,7 @@ class MyButton(
 
     def on_leave(self) -> None:
         anim = Animation(
-            scale_value_x= .9,
+            scale_value_x=.9,
             scale_value_y=.9,
             rotate_value_angle=0,
             duration=.2,
@@ -51,6 +52,7 @@ class Day(MDStackLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         print('day')
+        # todo buscar os dados no banco de dados referente à tabela do dia
 
         for time in range(6, 24):
             self.add_widget(
@@ -105,4 +107,3 @@ class Tabs(MDScreen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         print(self.name)
-

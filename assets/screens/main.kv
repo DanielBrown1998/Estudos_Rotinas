@@ -18,19 +18,21 @@
         theme_text_color: 'Custom'
         text_color: app.background
         theme_font_size: "Custom"
-        font_size: "30sp"
+        font_size: "50sp"
         bold: True
         halign: 'center'
         valign: 'center'
         size_hint: 1., None
-        height: '50dp'
+        height: '100dp'
         theme_bg_color: "Custom"
         md_bg_color: app.background_two
-    MDScreenManager:
+        elevation: 30
+        opacity: .6
+    Manager:
         id: screen_manager
         md_bg_color: app.background
         Info:
-            name: 'info'
+            name: app.title
         Tabs:
             name: 'segunda'
         Tabs:
@@ -51,8 +53,8 @@
         indicator_color: app.background_two
         BaseMDNavigationItem:
             icon: "circle" if root.ids.screen_manager.current == self.text else "circle-outline"
-            text: "info"
-            active: True
+            text: app.title
+
         BaseMDNavigationItem:
             icon: "circle" if root.ids.screen_manager.current == self.text else "circle-outline"
             text: 'segunda'
@@ -79,4 +81,4 @@
 
         BaseMDNavigationItem:
             icon: "circle" if root.ids.screen_manager.current == self.text else "circle-outline"
-            text: 'domindo'
+            text: 'domingo'

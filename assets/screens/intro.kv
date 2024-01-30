@@ -4,13 +4,21 @@
     padding: '20dp'
     orientation: 'vertical'
     MDCard:
-        style: 'outlined'
+        style: 'elevated'
         pos_hint: {"center_x": .5, "center_y": .5}
         id: info
         size_hint: 1., 1.
+        orientation: 'vertical'
+
+        FitImage:
+            source: "./assets/images/image.jpg"
+            size_hint: 1., .55
+            radius: "12dp", "12dp", 0, 0
         MDLabel:
+            padding: '20dp'
             halign: 'center'
             valign: 'center'
+            size_hint: 1., .45
             theme_font_size:
             font_size: '20sp'
             bold: True

@@ -1,26 +1,30 @@
 <Disciplina@MDTextField>:
     mode: "outlined"
     theme_text_color: "Custom"
-    text_color_normal: app.color_font
-    text_color_focus: app.color_font_focus
-    theme_line_color: "Custom"
-    line_color_normal: app.color_font
-    theme_bg_color: "Custom"
-    fill_color_normal: app.background
+    text_color_normal: app.color_font #if self.text != 'horario vago' else app.color_font_focus
+    text_color_focus: app.color_font_focus #if self.text != 'horario vago' else app.background
+#    theme_line_color: "Custom"
+#    line_color_normal: app.color_font
+#    theme_bg_color: "Custom"
+#    md_bg_color: app.background if self.text != 'horario vago' else app.background_two
+#    fill_color_normal: app.background_two if self.text != 'horario vago' else app.background
+#    fill_color_normal: app.background
     multiline: False
-    size_hint: .8, None
-    height: '40sp'
+    size_hint: None, None
+    width: '300dp'
+    height: '50dp'
 
 <MyButton>
     icon: "shield-key-outline"
     style: "standard"
     size_hint: None, None
-    width: '50sp'
-    height: '50sp'
+    width: '50dp'
+    height: '50dp'
     theme_shadow_color: "Custom"
     shadow_color: app.color_shadow
     theme_icon_color: "Custom"
     icon_color: app.background
+    on_press: self.icon_color = app.color_font_focus; self.color_map = 'surface'
     color_map: 'secondary'
 
 <Day>
@@ -31,9 +35,10 @@
     padding: '20dp'
     height: self.minimum_height
     orientation: 'lr-tb'
+    pos_hint_x: {"center_x": .5}
 
 
 <Tabs>
     Scroll:
-        do_scroll_x: False
+        do_scroll_x: True
         do_scroll_y: True
