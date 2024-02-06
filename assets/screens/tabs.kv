@@ -1,3 +1,14 @@
+<MyButton>
+    icon: 'circle-outline'
+    style: 'standard'
+    theme_font_size: "Custom"
+    font_size: "30sp"
+    radius: [self.height / 2, ]
+    size_hint: None, None
+    size: "40dp", "40dp"
+    on_press: self.icon = 'circle' if self.icon == 'circle-outline' else 'circle-outline'
+
+
 <Disciplina>
     style: "elevated"
     size_hint: None, None
@@ -18,6 +29,11 @@
             color: "grey"
             bold: True
 
+        MyButton:
+            id: check
+            pos_hint: {"right": 1., "center_y": .5}
+            on_release: root.ids.texto.text = 'pressionei' if root.ids.texto.text == '' else ''
+
 
 <Day>
     md_bg_color: app.background
@@ -28,59 +44,77 @@
     orientation: 'lr-tb'
     pos_hint_x: {"center_x": .5}
     Disciplina:
-        id: 6
+        id: six
         hora: f"06:00"
+
     Disciplina:
-        id: 7
+        id: seven
         hora: f"07:00"
+
     Disciplina:
-        id: 8
+        id: eight
         hora: f"08:00"
+
     Disciplina:
-        id: 9
+        id: nine
         hora: f"09:00"
+
     Disciplina:
-        id: 10
+        id: ten
         hora: f"10:00"
+
     Disciplina:
-        id: 11
+        id: eleven
         hora: f"11:00"
+
     Disciplina:
-        id: 12
+        id: twelve
         hora: f"12:00"
+
     Disciplina:
-        id: 13
+        id: thirteen
         hora: f"13:00"
+
     Disciplina:
-        id: 14
+        id: fourteen
         hora: f"14:00"
+
     Disciplina:
-        id: 15
+        id: fifteen
         hora: f"15:00"
+
     Disciplina:
-        id: 16
+        id: sixteen
         hora: f"16:00"
+
     Disciplina:
-        id: 17
+        id: seventeen
         hora: f"17:00"
+
     Disciplina:
-        id: 18
+        id: eighteen
         hora: f"18:00"
+
     Disciplina:
-        id: 19
+        id: nineteen
         hora: f"19:00"
+
     Disciplina:
-        id: 20
+        id: twenty
         hora: f"20:00"
+
     Disciplina:
-        id: 21
+        id: twenty_one
         hora: f"21:00"
+
     Disciplina:
-        id: 22
+        id: twenty_two
         hora: f"22:00"
+
     Disciplina:
-        id: 23
+        id: twenty_three
         hora: f"23:00"
+
 <Tabs>
     Scroll:
         id: root.name

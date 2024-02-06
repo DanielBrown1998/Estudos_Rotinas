@@ -1,6 +1,7 @@
 from kivy.lang import Builder
 from kivy.metrics import dp
 from kivy.properties import StringProperty
+from kivymd.uix.button import MDIconButton
 from kivymd.uix.card import MDCard
 from kivymd.uix.relativelayout import MDRelativeLayout
 from kivymd.uix.screen import MDScreen
@@ -9,6 +10,12 @@ from kivy.core.window import Window
 from kivymd.uix.stacklayout import MDStackLayout
 
 Builder.load_file(r'./assets/screens/tabs.kv')
+
+
+class MyButton(MDIconButton):
+
+    def on_touch_down(self, touch):
+        super().on_touch_down(touch)
 
 
 class Content(MDRelativeLayout):
@@ -23,6 +30,9 @@ class Disciplina(MDCard):
         super().__init__(**kwargs)
         self.width = Window.size[0] - dp("40")
 
+    def change_me(self, my_id):
+        self.ids.texto.text = 'adicionado'
+
 
 class Day(MDStackLayout):
 
@@ -30,10 +40,6 @@ class Day(MDStackLayout):
         super().__init__(*args, **kwargs)
         print('day')
         # todo buscar os dados no banco de dados referente à tabela do dia
-
-    def on_touch_down(self, touch):
-        super().on_touch_down(touch)
-        print(self.ids.keys())
 
 
 class Scroll(MDScrollView):
