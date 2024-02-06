@@ -8,11 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8df999a6-b8d5-4d7f-bd73-51999ac5ae63" name="Changes" comment="update datas">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/screens/tabs.kv" beforeDir="false" afterPath="$PROJECT_DIR$/assets/screens/tabs.kv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tabs.py" beforeDir="false" afterPath="$PROJECT_DIR$/tabs.py" afterDir="false" />
-    </list>
+    <list default="true" id="8df999a6-b8d5-4d7f-bd73-51999ac5ae63" name="Changes" comment="update datas" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
