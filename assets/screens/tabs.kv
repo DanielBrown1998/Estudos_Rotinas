@@ -1,34 +1,25 @@
-<Disciplina@MDTextField>:
-    mode: "outlined"
-    theme_text_color: "Custom"
-    text_color_normal: app.color_font #if self.text != 'horario vago' else app.color_font_focus
-    text_color_focus: app.color_font_focus #if self.text != 'horario vago' else app.background
-#    theme_line_color: "Custom"
-#    line_color_normal: app.color_font
-#    theme_bg_color: "Custom"
-#    md_bg_color: app.background if self.text != 'horario vago' else app.background_two
-#    fill_color_normal: app.background_two if self.text != 'horario vago' else app.background
-#    fill_color_normal: app.background
-    multiline: False
+<Disciplina>
+    style: "elevated"
     size_hint: None, None
-    width: '300dp'
+    pos_hint_x: {"center_x": .5}
     height: '50dp'
+    Content:
+        id: relative
+        MDLabel:
+            id: hora
+            text: root.hora
+            pos_hint: {"center_x":.6, "top": 1.}
 
-<MyButton>
-    icon: "shield-key-outline"
-    style: "standard"
-    size_hint: None, None
-    width: '50dp'
-    height: '50dp'
-    theme_shadow_color: "Custom"
-    shadow_color: app.color_shadow
-    theme_icon_color: "Custom"
-    icon_color: app.background
-    on_press: self.icon_color = app.color_font_focus; self.color_map = 'surface'
-    color_map: 'secondary'
+        MDLabel:
+            id: texto
+            text: root.text
+            adaptive_size: True
+            pos_hint: {"center_x": .6, "top": .6}
+            color: "grey"
+            bold: True
+
 
 <Day>
-    id: root.name
     md_bg_color: app.background
     size_hint: 1., None
     spacing: '25dp'
@@ -36,9 +27,62 @@
     height: self.minimum_height
     orientation: 'lr-tb'
     pos_hint_x: {"center_x": .5}
-
-
+    Disciplina:
+        id: 6
+        hora: f"06:00"
+    Disciplina:
+        id: 7
+        hora: f"07:00"
+    Disciplina:
+        id: 8
+        hora: f"08:00"
+    Disciplina:
+        id: 9
+        hora: f"09:00"
+    Disciplina:
+        id: 10
+        hora: f"10:00"
+    Disciplina:
+        id: 11
+        hora: f"11:00"
+    Disciplina:
+        id: 12
+        hora: f"12:00"
+    Disciplina:
+        id: 13
+        hora: f"13:00"
+    Disciplina:
+        id: 14
+        hora: f"14:00"
+    Disciplina:
+        id: 15
+        hora: f"15:00"
+    Disciplina:
+        id: 16
+        hora: f"16:00"
+    Disciplina:
+        id: 17
+        hora: f"17:00"
+    Disciplina:
+        id: 18
+        hora: f"18:00"
+    Disciplina:
+        id: 19
+        hora: f"19:00"
+    Disciplina:
+        id: 20
+        hora: f"20:00"
+    Disciplina:
+        id: 21
+        hora: f"21:00"
+    Disciplina:
+        id: 22
+        hora: f"22:00"
+    Disciplina:
+        id: 23
+        hora: f"23:00"
 <Tabs>
     Scroll:
+        id: root.name
         do_scroll_x: True
         do_scroll_y: True

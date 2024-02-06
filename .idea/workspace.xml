@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8df999a6-b8d5-4d7f-bd73-51999ac5ae63" name="Changes" comment="update data">
+    <list default="true" id="8df999a6-b8d5-4d7f-bd73-51999ac5ae63" name="Changes" comment="update datas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/screens/intro.kv" beforeDir="false" afterPath="$PROJECT_DIR$/assets/screens/intro.kv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/screens/main.kv" beforeDir="false" afterPath="$PROJECT_DIR$/assets/screens/main.kv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/screens/tabs.kv" beforeDir="false" afterPath="$PROJECT_DIR$/assets/screens/tabs.kv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/connection.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
@@ -60,7 +58,7 @@
       <recent name="C:\Users\Danie\OneDrive\Documentos\GitHub\Estudos_Rotinas\assets" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.tabs">
     <configuration name="build" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Estudos_Rotinas" />
       <option name="ENV_FILES" value="" />
@@ -173,8 +171,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.connection" />
         <item itemvalue="Python.tabs" />
+        <item itemvalue="Python.connection" />
         <item itemvalue="Python.build" />
         <item itemvalue="Python.builder" />
       </list>
@@ -183,7 +181,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-50da183f06c8-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13135.95" />
+        <option value="bundled-python-sdk-5a2391486177-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13763.11" />
       </set>
     </attachedChunks>
   </component>
@@ -228,13 +226,22 @@
       <option name="project" value="LOCAL" />
       <updated>1706206030347</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="update datas">
+      <option name="closed" value="true" />
+      <created>1706641757587</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1706641757587</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refatorando" />
     <MESSAGE value="update palette" />
     <MESSAGE value="update data" />
-    <option name="LAST_COMMIT_MESSAGE" value="update data" />
+    <MESSAGE value="update datas" />
+    <option name="LAST_COMMIT_MESSAGE" value="update datas" />
   </component>
 </project>

@@ -1,8 +1,8 @@
-import math
+# import math
 
 from kivy.lang import Builder
-from kivy.metrics import dp
-from kivy.properties import StringProperty, ColorProperty
+# from kivy.metrics import dp
+from kivy.properties import StringProperty, ColorProperty, ListProperty
 from kivymd.app import MDApp
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.navigationbar import MDNavigationBar, MDNavigationItem
@@ -22,6 +22,8 @@ class Nav(MDNavigationBar):
 
 # Widget de gerenciamento
 class Principal(MDBoxLayout):
+    day = StringProperty()
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.day = app.today()
@@ -37,6 +39,7 @@ class Manager(MDScreenManager):
 class MainApp(MDApp):
     # font_file
     KIVY_HOME = Path(__file__).parent
+    days = ListProperty(['segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sabado', 'domingo'])
 
     # Paleta
     color_font_focus = ColorProperty('#234CAD')
@@ -47,37 +50,28 @@ class MainApp(MDApp):
 
     def on_start(self) -> bool:
         super().on_start()
-        """
-        todo inicializar o banco de dados
-        caso os campos estejam vazios retorne False
-        """
         return True
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    def on_pause(self):
+        super().on_pause()
+        return True
+
+    def on_resume(self):
+        super().on_resume()
+        return True
+
+    def on_stop(self):
+        super().on_stop()
+        return True
+
+    def build_config(self, config):
+        super().build_config(config)
+        return True
 
     def today(self) -> str | None:
-
-        """
-        todo buscar os dados do banco de dados:
-        todo caso esteja vazio retorne None
-        """
         from datetime import datetime
         day = datetime.weekday(datetime.today())
-        if day == 6:
-            return 'domingo'
-        elif day == 0:
-            return 'segunda'
-        elif day == 1:
-            return 'terça'
-        elif day == 2:
-            return 'quarta'
-        elif day == 3:
-            return 'quinta'
-        elif day == 4:
-            return 'sexta'
-        elif day == 5:
-            return 'sabado'
+        return self.days[day]
 
     def on_switch_tabs(
             self,
