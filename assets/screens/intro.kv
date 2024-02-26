@@ -1,8 +1,6 @@
-<Body>
-    size_hint: 1., 1.
-    md_bg_color: app.background
-    padding: '20dp'
-    orientation: 'vertical'
+<Intro@MDSwiperItem>:
+    image: root.image
+    padding: dp(12)
     MDCard:
         style: 'elevated'
         pos_hint: {"center_x": .5, "center_y": .5}
@@ -11,7 +9,7 @@
         orientation: 'vertical'
 
         FitImage:
-            source: "./assets/images/image.jpg"
+            source: root.image
             size_hint: 1., .55
             radius: "12dp", "12dp", 0, 0
         MDLabel:
@@ -24,4 +22,94 @@
             bold: True
             md_bg_color: app.background
             text: 'Esse App destina-se exclusivamente àqueles(as) que desejam organizar seu planejamento do dia-a-dia'
+
+<Check>
+    size_hint: None, None
+    size: dp(40), dp(40)
+    on_active: self.on_checkbox_active(*args)
+
+
+<Select@MDBoxLayout>
+    padding: dp(20)
+    MDLabel:
+        id: texto
+        text: 'opção'
+        halign: 'center'
+        valign: 'bottom'
+        pos_hint: {"center_x": .5, "center_y": .5}
+        size_hint: root.width, root.height
+    Check:
+        id: check
+        active: False
+        pos_hint: {"right": 1., "center_y": .5}
+
+
+<Config@MDSwiperItem>
+    padding: dp(12)
+    MDCard:
+        style: 'elevated'
+        pos_hint: {"center_x": .5, "center_y": .5}
+        id: info
+        size_hint: 1., 1.
+        orientation: 'vertical'
+        MDLabel:
+            halign: 'center'
+            text: 'Configurações'
+            font_size: '30sp'
+            bold: True
+            size_hint: 1., .3
+        MDDivider:
+            size_hint_x: 1.
+            orientation: "horizontal"
+        Select:
+            texto: 'segunda'
+            size_hint: 1., .1
+        MDDivider:
+            size_hint_x: 1.
+            orientation: "horizontal"
+        Select:
+            size_hint: 1., .1
+            texto: 'terça'
+        MDDivider:
+            size_hint_x: 1.
+            orientation: "horizontal"
+        Select:
+            size_hint: 1., .1
+            texto: 'quarta'
+        MDDivider:
+            size_hint_x: 1.
+            orientation: "horizontal"
+        Select:
+            size_hint: 1., .1
+            texto: 'quinta'
+        MDDivider:
+            size_hint_x: 1.
+            orientation: "horizontal"
+        Select:
+            size_hint: 1., .1
+            texto: 'sexta'
+        MDDivider:
+            size_hint_x: 1.
+            orientation: "horizontal"
+        Select:
+            size_hint: 1., .1
+            texto: 'sabado'
+        MDDivider:
+            size_hint_x: 1.
+            orientation: "horizontal"
+        Select:
+            size_hint: 1., .1
+            texto: 'domingo'
+        MDDivider:
+            size_hint_x: 1.
+            orientation: "horizontal"
+
+
+<Body>
+    width_mult: 1.1
+    Intro:
+        image: "./assets/images/image.jpg"
+    Config:
+
+
 <Info>

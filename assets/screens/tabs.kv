@@ -1,12 +1,6 @@
-<MyButton>
-    icon: 'circle-outline'
-    style: 'standard'
-    theme_font_size: "Custom"
-    font_size: "30sp"
-    radius: [self.height / 2, ]
+<Check>
     size_hint: None, None
     size: "40dp", "40dp"
-    on_press: self.icon = 'circle' if self.icon == 'circle-outline' else 'circle-outline'
 
 
 <Disciplina>
@@ -29,10 +23,11 @@
             color: "grey"
             bold: True
 
-        MyButton:
+        Check:
             id: check
-            pos_hint: {"right": 1., "center_y": .5}
-            on_release: root.ids.texto.text = 'pressionei' if root.ids.texto.text == '' else ''
+            active: False
+            on_active: self.on_checkbox_active(*args)
+            pos_hint: {"right": .95, "center_y": .5}
 
 
 <Day>
@@ -46,74 +41,92 @@
     Disciplina:
         id: six
         hora: f"06:00"
+        width: root.width*.9
 
     Disciplina:
         id: seven
         hora: f"07:00"
+        width: root.width*.9
 
     Disciplina:
         id: eight
         hora: f"08:00"
+        width: root.width*.9
 
     Disciplina:
         id: nine
         hora: f"09:00"
+        width: root.width*.9
 
     Disciplina:
         id: ten
         hora: f"10:00"
+        width: root.width*.9
 
     Disciplina:
         id: eleven
         hora: f"11:00"
+        width: root.width*.9
 
     Disciplina:
         id: twelve
         hora: f"12:00"
+        width: root.width*.9
 
     Disciplina:
         id: thirteen
         hora: f"13:00"
+        width: root.width*.9
 
     Disciplina:
         id: fourteen
         hora: f"14:00"
+        width: root.width*.9
 
     Disciplina:
         id: fifteen
         hora: f"15:00"
+        width: root.width*.9
 
     Disciplina:
         id: sixteen
         hora: f"16:00"
+        width: root.width*.9
 
     Disciplina:
         id: seventeen
         hora: f"17:00"
+        width: root.width*.9
 
     Disciplina:
         id: eighteen
         hora: f"18:00"
+        width: root.width*.9
 
     Disciplina:
         id: nineteen
         hora: f"19:00"
+        width: root.width*.9
 
     Disciplina:
         id: twenty
         hora: f"20:00"
+        width: root.width*.9
 
     Disciplina:
         id: twenty_one
         hora: f"21:00"
+        width: root.width*.9
 
     Disciplina:
         id: twenty_two
         hora: f"22:00"
+        width: root.width*.9
 
     Disciplina:
         id: twenty_three
         hora: f"23:00"
+        width: root.width*.9
 
 <Tabs>
     Scroll:

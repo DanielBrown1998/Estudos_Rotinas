@@ -1,21 +1,24 @@
 from kivy.lang import Builder
 from kivy.metrics import dp
 from kivy.properties import StringProperty
-from kivymd.uix.button import MDIconButton
 from kivymd.uix.card import MDCard
 from kivymd.uix.relativelayout import MDRelativeLayout
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.scrollview import MDScrollView
 from kivy.core.window import Window
+from kivymd.uix.selectioncontrol import MDCheckbox
 from kivymd.uix.stacklayout import MDStackLayout
 
 Builder.load_file(r'./assets/screens/tabs.kv')
 
 
-class MyButton(MDIconButton):
+class Check(MDCheckbox):
 
-    def on_touch_down(self, touch):
-        super().on_touch_down(touch)
+    def on_checkbox_active(self, checkbox: object, value: object) -> None:
+        if value:
+            print('The checkbox', checkbox, 'is active', 'and', checkbox.state, 'state')
+        else:
+            print('The checkbox', checkbox, 'is inactive', 'and', checkbox.state, 'state')
 
 
 class Content(MDRelativeLayout):
