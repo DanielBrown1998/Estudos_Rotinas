@@ -1,4 +1,5 @@
 # import math
+from connection import create_database, drop_database
 
 from kivy.lang import Builder
 # from kivy.metrics import dp
@@ -9,6 +10,12 @@ from kivymd.uix.navigationbar import MDNavigationBar, MDNavigationItem
 from pathlib import Path
 
 from kivymd.uix.screenmanager import MDScreenManager
+
+# todo criar uma arquivo json ou cache do kivy
+#  para guardar algumas informações como:
+#  database já criado;
+#  primeiro acesso;
+#  guardar checkpoints
 
 
 class BaseMDNavigationItem(MDNavigationItem):
@@ -26,9 +33,12 @@ class Principal(MDBoxLayout):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.day = app.today()
-        if self.day is not None:
-            self.ids.screen_manager.current = self.day
+        if app.first_access:
+            self.ids.screen_manager.current = app.title
+        else:
+            self.day = app.today()
+            if self.day is not None:
+                self.ids.screen_manager.current = self.day
 
 
 class Manager(MDScreenManager):
@@ -41,6 +51,8 @@ class MainApp(MDApp):
     KIVY_HOME = Path(__file__).parent
     days = ListProperty(['segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sabado', 'domingo'])
 
+    first_access = True  # todo esse elemento é provisório
+
     # Paleta
     color_font_focus = ColorProperty('#234CAD')
     color_shadow = ColorProperty('#31477A')
@@ -48,9 +60,11 @@ class MainApp(MDApp):
     background_two = ColorProperty('#2B3347')
     color_font = ColorProperty('#292C33')
 
-    def on_start(self) -> bool:
-        super().on_start()
-        return True
+    def __init__(self, first_access=True, **kwargs):
+        super().__init__(**kwargs)
+        if first_access:
+            print('criando database')
+            create_database()
 
     def on_pause(self):
         super().on_pause()
@@ -62,6 +76,9 @@ class MainApp(MDApp):
 
     def on_stop(self):
         super().on_stop()
+        # todo this is temporary
+        print(f'excluindo database')
+        drop_database()
         return True
 
     def build_config(self, config):
