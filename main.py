@@ -42,7 +42,7 @@ class Principal(MDBoxLayout):
 
 
 class Manager(MDScreenManager):
-    pass
+    screen_previous = StringProperty()
 
 
 # class principal

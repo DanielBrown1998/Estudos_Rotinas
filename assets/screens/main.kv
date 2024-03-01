@@ -1,5 +1,6 @@
 #:import Tabs tabs.Tabs
 #:import Info intro.Info
+#:import PopUpScreen tabs.PopUpScreen
 
 <BaseMDNavigationItem>
 
@@ -12,9 +13,12 @@
 
 <Principal>
     orientation: 'vertical'
+    id: principal
     MDLabel:
         id: title
-        text: root.ids.screen_manager.current
+        text:
+            'atribuir tarefa' if root.ids.screen_manager.current == 'popup' \
+            else root.ids.screen_manager.current
         theme_text_color: 'Custom'
         text_color: app.background
         theme_font_size: "Custom"
@@ -47,6 +51,10 @@
             name: 'sabado'
         Tabs:
             name: 'domingo'
+        PopUpScreen:
+            name: 'popup'
+            day: root.ids.screen_manager.screen_previous
+
     Nav:
         id: nav
         on_switch_tabs: app.on_switch_tabs(*args)

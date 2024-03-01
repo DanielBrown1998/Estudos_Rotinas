@@ -1,3 +1,65 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+<MyButton>
+
+
+<PopUpCard>
+    orientation: 'vertical'
+    size_hint: None, None
+    size: '320dp', '320dp'
+    padding: '24dp'
+    radius: ["24dp"]
+    pos_hint: {'center_x': .5, 'center_y': .5}
+
+    MDLabel:
+        id: hora
+        text: 'hora'
+        bold: True
+        theme_text_size: 'Custom'
+        text_size: '30sp'
+        theme_text_color: 'Custom'
+        text_color: get_color_from_hex('#1b232a')
+        font_style: 'Title'
+        role: 'large'
+        valign: 'center'
+        halign: 'center'
+        size_hint_y: .2
+
+    MDFloatLayout:
+        id: box
+        size_hint_y: .6
+        MDTextField:
+            id: tarefa
+            mode: 'outlined'
+            size_hint_y: None
+            height: '30dp'
+            size_hint_x: .95
+            pos_hint: {"center_x": .5, "center_y": .75}
+            MDTextFieldHintText:
+                text: "tarefa"
+            MDTextFieldMaxLengthText:
+                max_text_length: 20
+
+    MyButton:
+        style: 'elevated'
+        on_press: self.update(root.ids.tarefa.text, root.ids.hora.text, root.day)
+        pos_hint: {"center_x": .5, "center_y": .1}
+        MDButtonIcon:
+            icon: 'plus'
+        MDButtonText:
+            text: 'add'
+
+<PopUpScreen>
+    md_bg_color: get_color_from_hex('#1b232a')
+    PopUpCard:
+        day: root.day
+
+<Texto>
+    adaptive_size: True
+    pos_hint: {"center_x": .6, "top": .6}
+    color: "grey"
+    bold: True
+#    on_touch_down: self.parent.change()
+
 <Check>
     size_hint: None, None
     size: "40dp", "40dp"
@@ -14,14 +76,8 @@
             id: hora
             text: root.hora
             pos_hint: {"center_x":.6, "top": 1.}
-
-        MDLabel:
+        Texto:
             id: texto
-            text: root.text
-            adaptive_size: True
-            pos_hint: {"center_x": .6, "top": .6}
-            color: "grey"
-            bold: True
 
         Check:
             id: check
