@@ -1,45 +1,56 @@
 from kivy.lang import Builder
-from kivy.metrics import dp
 from kivy.properties import StringProperty
-from kivymd.uix.button import MDButton
+from kivy.uix.popup import Popup
+from kivymd.uix.boxlayout import MDBoxLayout
+from kivymd.uix.button import MDButton, MDIconButton
 from kivymd.uix.card import MDCard
 from kivymd.uix.label import MDLabel
 from kivymd.uix.relativelayout import MDRelativeLayout
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.scrollview import MDScrollView
-from kivy.core.window import Window
 from kivymd.uix.selectioncontrol import MDCheckbox
 from kivymd.uix.stacklayout import MDStackLayout
 
 Builder.load_file(r'./assets/screens/tabs.kv')
 
 
-class MyButton(MDButton):
+class PopupButton(MDButton):
     tarefa = StringProperty(None)
     hora = StringProperty(None)
     day = StringProperty(None)
 
-    def update(self, tarefa: str, hora: str, day: str) -> None:
-        self.tarefa = tarefa
+
+class PopUpCard(Popup):
+    day = StringProperty()
+    hora = StringProperty()
+
+    def __init__(self, hora: str, day: str) -> None:
+        super().__init__()
         self.hora = hora
         self.day = day
-        print(self.tarefa, self.day, self.hora)
 
 
-class PopUpCard(MDCard):
+class ContentPopUp(MDBoxLayout):
+    day = StringProperty()
+    hora = StringProperty()
+    dismiss = Popup.dismiss
+
+
+class ContentButton(MDIconButton):
+    hora = StringProperty()
     day = StringProperty()
 
-
-class PopUpScreen(MDScreen):
-    day = StringProperty()
+    def update_data(self, hora: str):
+        self.day = self.parent.change()
+        popup = PopUpCard(
+            hora=hora,
+            day=self.day,
+        )
+        popup.open()
 
 
 class Texto(MDLabel):
-
-    def on_touch_down(self, touch):
-        super().on_touch_down(touch)
-        if touch.is_double_tap and touch.pos[0] < Window.size[0]*.85:
-            self.parent.change()
+    ...
 
 
 class Check(MDCheckbox):
@@ -52,51 +63,34 @@ class Check(MDCheckbox):
 
 
 class Content(MDRelativeLayout):
+    name_tab = StringProperty()
+    hora = StringProperty()
 
     def change(self):
-        self.parent.change()
+        return self.parent.change()
 
 
 class Disciplina(MDCard):
     hora = StringProperty()
     text = StringProperty()
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.width = Window.size[0] - dp("40")
-
     def change(self):
-        self.parent.change()
+        return self.parent.change()
 
 
 class Day(MDStackLayout):
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        print('day')
-
-        # todo buscar os dados no banco de dados referente à tabela do dia
-
     def change(self):
-        self.parent.change()
+        return self.parent.change()
 
 
 class Scroll(MDScrollView):
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.add_widget(
-            Day(
-                width=Window.size[0]
-            )
-        )
-
     def change(self):
-        self.parent.change()
+        return self.parent.change()
 
 
 class Tabs(MDScreen):
+    # todo buscar os dados no banco de dados referente à tabela do dia
 
     def change(self):
-        self.parent.screen_previous = self.name
-        self.parent.current = 'popup'
+        return self.name

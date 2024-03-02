@@ -1,90 +1,128 @@
 #:import get_color_from_hex kivy.utils.get_color_from_hex
-<MyButton>
+#:import Window kivy.core.window.Window
 
+<PopupButton>
+
+<ContentPopUp>
 
 <PopUpCard>
-    orientation: 'vertical'
+    title: f"{self.day}"
     size_hint: None, None
     size: '320dp', '320dp'
     padding: '24dp'
     radius: ["24dp"]
     pos_hint: {'center_x': .5, 'center_y': .5}
+    ContentPopUp:
+        orientation: 'vertical'
+        padding: '10dp'
+        MDLabel:
+            id: hora
+            text: root.hora
+            bold: True
+            text_size: '30sp'
+            theme_text_color: 'Custom'
+            text_color: get_color_from_hex('#FFFFFF')
+            font_style: 'Title'
+            role: 'large'
+            valign: 'center'
+            halign: 'center'
+            size_hint_y: .2
 
-    MDLabel:
-        id: hora
-        text: 'hora'
-        bold: True
-        theme_text_size: 'Custom'
-        text_size: '30sp'
-        theme_text_color: 'Custom'
-        text_color: get_color_from_hex('#1b232a')
-        font_style: 'Title'
-        role: 'large'
-        valign: 'center'
-        halign: 'center'
-        size_hint_y: .2
+        MDFloatLayout:
+            id: box
+            size_hint_y: .3
+            MDTextField:
+                id: tarefa
+                mode: 'outlined'
+                size_hint_y: None
+                height: '30dp'
+                size_hint_x: .95
+                pos_hint: {"center_x": .5, "center_y": .75}
+                theme_text_color: "Custom"
+                text_color_focus: self.text_color_normal
+                text_color_normal: get_color_from_hex("#FFFFFF")
+                multiline: False
+                MDTextFieldHintText:
+                    theme_text_color: "Custom"
+                    text_color_focus: self.text_color_normal
+                    text_color_normal: get_color_from_hex("#FFFFFF")
+                    text: "tarefa"
+                MDTextFieldMaxLengthText:
+                    text_color_normal: get_color_from_hex("#FFFFFF")
+                    theme_text_color: "Custom"
+                    text_color_focus: self.text_color_normal
+                    max_text_length: 20
 
-    MDFloatLayout:
-        id: box
-        size_hint_y: .6
-        MDTextField:
-            id: tarefa
-            mode: 'outlined'
-            size_hint_y: None
-            height: '30dp'
-            size_hint_x: .95
-            pos_hint: {"center_x": .5, "center_y": .75}
-            MDTextFieldHintText:
-                text: "tarefa"
-            MDTextFieldMaxLengthText:
-                max_text_length: 20
+        MDLabel:
+            id: atention
+            size_hint_y: .3
+            text_size: '5sp'
+            valign: 'top'
+            halign: 'left'
+            theme_text_color: 'Custom'
+            text_color: get_color_from_hex('#FF0000')
 
-    MyButton:
-        style: 'elevated'
-        on_press: self.update(root.ids.tarefa.text, root.ids.hora.text, root.day)
-        pos_hint: {"center_x": .5, "center_y": .1}
-        MDButtonIcon:
-            icon: 'plus'
-        MDButtonText:
-            text: 'add'
-
-<PopUpScreen>
-    md_bg_color: get_color_from_hex('#1b232a')
-    PopUpCard:
-        day: root.day
+        PopupButton:
+            style: 'elevated'
+            tarefa: root.ids.tarefa.text
+            day: root.day
+            hora: root.hora
+            on_press:
+                app.root.ids[self.day].ids[f'content_{root.hora[:2]}'].ids.texto.text = \
+                self.tarefa.strip().capitalize() \
+                if len(root.ids.tarefa.text) <= 20 else ''; \
+                root.ids.atention.text = 'atente-se ao limite de caracteres' \
+                if len(root.ids.tarefa.text) >= 20 else ''
+            on_release: root.dismiss() if len(root.ids.tarefa.text) <=20 else None
+            pos_hint: {"center_x": .5, "center_y": .1}
+            MDButtonIcon:
+                icon: 'plus'
+            MDButtonText:
+                text: 'add'
 
 <Texto>
     adaptive_size: True
     pos_hint: {"center_x": .6, "top": .6}
-    color: "grey"
+    halign: 'left'
+    valign: 'center'
+    theme_text_color: 'Custom'
+    text_color: get_color_from_hex('#111111')
     bold: True
-#    on_touch_down: self.parent.change()
 
 <Check>
     size_hint: None, None
     size: "40dp", "40dp"
 
 
+<Content>
+    MDLabel:
+        id: hora
+        text: root.hora
+        pos_hint: {"center_x":.6, "top": 1.}
+
+    Texto:
+        id: texto
+        pos_hint: {"center_x":.5, "center_y": .5}
+
+    Check:
+        id: check
+        active: False
+        on_active: self.on_checkbox_active(*args)
+        pos_hint: {"right": .85, "center_y": .5}
+
+    ContentButton:
+        id: content_button
+        on_press: self.update_data(root.ids.hora.text)  #; print(app.root.ids[root.name_tab])
+#        on_release: print(app.root.ids[root.name_tab].ids[f'content_{root.ids.hora.text[:2]}'])
+        pos_hint: {"right": .95, "center_y": .5}
+        style: 'standard'
+        icon: 'plus'
+
 <Disciplina>
     style: "elevated"
     size_hint: None, None
     pos_hint_x: {"center_x": .5}
     height: '50dp'
-    Content:
-        id: relative
-        MDLabel:
-            id: hora
-            text: root.hora
-            pos_hint: {"center_x":.6, "top": 1.}
-        Texto:
-            id: texto
-
-        Check:
-            id: check
-            active: False
-            on_active: self.on_checkbox_active(*args)
-            pos_hint: {"right": .95, "center_y": .5}
-
 
 <Day>
     md_bg_color: app.background
@@ -94,98 +132,170 @@
     height: self.minimum_height
     orientation: 'lr-tb'
     pos_hint_x: {"center_x": .5}
-    Disciplina:
-        id: six
-        hora: f"06:00"
-        width: root.width*.9
 
-    Disciplina:
-        id: seven
-        hora: f"07:00"
-        width: root.width*.9
-
-    Disciplina:
-        id: eight
-        hora: f"08:00"
-        width: root.width*.9
-
-    Disciplina:
-        id: nine
-        hora: f"09:00"
-        width: root.width*.9
-
-    Disciplina:
-        id: ten
-        hora: f"10:00"
-        width: root.width*.9
-
-    Disciplina:
-        id: eleven
-        hora: f"11:00"
-        width: root.width*.9
-
-    Disciplina:
-        id: twelve
-        hora: f"12:00"
-        width: root.width*.9
-
-    Disciplina:
-        id: thirteen
-        hora: f"13:00"
-        width: root.width*.9
-
-    Disciplina:
-        id: fourteen
-        hora: f"14:00"
-        width: root.width*.9
-
-    Disciplina:
-        id: fifteen
-        hora: f"15:00"
-        width: root.width*.9
-
-    Disciplina:
-        id: sixteen
-        hora: f"16:00"
-        width: root.width*.9
-
-    Disciplina:
-        id: seventeen
-        hora: f"17:00"
-        width: root.width*.9
-
-    Disciplina:
-        id: eighteen
-        hora: f"18:00"
-        width: root.width*.9
-
-    Disciplina:
-        id: nineteen
-        hora: f"19:00"
-        width: root.width*.9
-
-    Disciplina:
-        id: twenty
-        hora: f"20:00"
-        width: root.width*.9
-
-    Disciplina:
-        id: twenty_one
-        hora: f"21:00"
-        width: root.width*.9
-
-    Disciplina:
-        id: twenty_two
-        hora: f"22:00"
-        width: root.width*.9
-
-    Disciplina:
-        id: twenty_three
-        hora: f"23:00"
-        width: root.width*.9
 
 <Tabs>
     Scroll:
-        id: root.name
         do_scroll_x: True
         do_scroll_y: True
+        Day:
+            width: Window.size[0]
+            Disciplina:
+                id: seis
+                hora: f"06:00"
+                width: root.width*.9
+                Content:
+                    name_tab: root.name
+                    id: content_06
+                    hora: root.ids.seis.hora
+            Disciplina:
+                id: sete
+                hora: f"07:00"
+                width: root.width*.9
+                Content:
+                    id: content_07
+                    name_tab: root.name
+                    hora: root.ids.sete.hora
+
+            Disciplina:
+                id: oito
+                hora: f"08:00"
+                width: root.width*.9
+                Content:
+                    id: content_08
+                    name_tab: root.name
+                    hora: root.ids.oito.hora
+
+            Disciplina:
+                id: nove
+                hora: f"09:00"
+                width: root.width*.9
+                Content:
+                    id: content_09
+                    name_tab: root.name
+                    hora: root.ids.nove.hora
+
+            Disciplina:
+                id: dez
+                hora: f"10:00"
+                width: root.width*.9
+                Content:
+                    id: content_10
+                    name_tab: root.name
+                    hora: root.ids.dez.hora
+
+            Disciplina:
+                id: onze
+                hora: f"11:00"
+                width: root.width*.9
+                Content:
+                    id: content_11
+                    name_tab: root.name
+                    hora: root.ids.onze.hora
+
+            Disciplina:
+                id: doze
+                hora: f"12:00"
+                width: root.width*.9
+                Content:
+                    id: content_12
+                    name_tab: root.name
+                    hora: root.ids.doze.hora
+
+            Disciplina:
+                id: treze
+                hora: f"13:00"
+                width: root.width*.9
+                Content:
+                    id: content_13
+                    name_tab: root.name
+                    hora: root.ids.treze.hora
+
+            Disciplina:
+                id: quatorze
+                hora: f"14:00"
+                width: root.width*.9
+                Content:
+                    id: content_14
+                    name_tab: root.name
+                    hora: root.ids.quatorze.hora
+
+            Disciplina:
+                id: quinze
+                hora: f"15:00"
+                width: root.width*.9
+                Content:
+                    id: content_15
+                    name_tab: root.name
+                    hora: root.ids.quinze.hora
+
+            Disciplina:
+                id: dezesseis
+                width: root.width*.9
+                Content:
+                    id: content_16
+                    name_tab: root.name
+                    hora: root.ids.dezesseis.hora
+
+            Disciplina:
+                id: dezessete
+                hora: f"17:00"
+                width: root.width*.9
+                Content:
+                    id: content_17
+                    name_tab: root.name
+                    hora: root.ids.dezessete.hora
+
+            Disciplina:
+                id: dezoito
+                hora: f"18:00"
+                width: root.width*.9
+                Content:
+                    id: content_18
+                    name_tab: root.name
+                    hora: root.ids.dezoito.hora
+
+            Disciplina:
+                id: dezenove
+                hora: f"19:00"
+                width: root.width*.9
+                Content:
+                    id: content_19
+                    name_tab: root.name
+                    hora: root.ids.dezenove.hora
+
+            Disciplina:
+                id: vinte
+                hora: f"20:00"
+                width: root.width*.9
+                Content:
+                    id: content_20
+                    name_tab: root.name
+                    hora: root.ids.vinte.hora
+
+            Disciplina:
+                id: vinte_um
+                hora: f"21:00"
+                width: root.width*.9
+                Content:
+                    id: content_21
+                    name_tab: root.name
+                    hora: root.ids.vinte_um.hora
+
+            Disciplina:
+                id: vinte_dois
+                hora: f"22:00"
+                width: root.width*.9
+                Content:
+                    id: content_22
+                    name_tab: root.name
+                    hora: root.ids.vinte_dois.hora
+
+            Disciplina:
+                id: vinte_tres
+                hora: f"23:00"
+                width: root.width*.9
+                Content:
+                    id: content_23
+                    name_tab: root.name
+                    hora: root.ids.vinte_tres.hora
