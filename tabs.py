@@ -11,7 +11,6 @@ from kivymd.uix.scrollview import MDScrollView
 from kivymd.uix.selectioncontrol import MDCheckbox
 from kivymd.uix.stacklayout import MDStackLayout
 
-import json
 Builder.load_file(r'./assets/screens/tabs.kv')
 
 

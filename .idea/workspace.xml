@@ -9,9 +9,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8df999a6-b8d5-4d7f-bd73-51999ac5ae63" name="Changes" comment="adicionando: requirements.txt">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/screens/tabs.kv" beforeDir="false" afterPath="$PROJECT_DIR$/assets/screens/tabs.kv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/data/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tabs.py" beforeDir="false" afterPath="$PROJECT_DIR$/tabs.py" afterDir="false" />
     </list>

@@ -1,4 +1,3 @@
-# import math
 import json
 
 from connection import create_database, drop_database
