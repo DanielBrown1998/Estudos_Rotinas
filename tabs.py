@@ -11,6 +11,7 @@ from kivymd.uix.scrollview import MDScrollView
 from kivymd.uix.selectioncontrol import MDCheckbox
 from kivymd.uix.stacklayout import MDStackLayout
 
+import json
 Builder.load_file(r'./assets/screens/tabs.kv')
 
 
@@ -90,7 +91,6 @@ class Scroll(MDScrollView):
 
 
 class Tabs(MDScreen):
-    # todo buscar os dados no banco de dados referente à tabela do dia
 
     def change(self):
         return self.name

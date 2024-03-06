@@ -1,4 +1,6 @@
 # import math
+import json
+
 from connection import create_database, drop_database
 
 from kivy.lang import Builder
@@ -62,6 +64,9 @@ class MainApp(MDApp):
 
     def __init__(self, first_access=True, **kwargs):
         super().__init__(**kwargs)
+        self.hora: str | None = None  # a hora do check
+        self.active: bool | None = None  # o valor do check
+        self.checks = None  # listas com os checks salvos
         if first_access:
             print('criando database')
             create_database()
@@ -74,11 +79,51 @@ class MainApp(MDApp):
         super().on_resume()
         return True
 
+    def on_start(self):
+        super().on_start()
+        for day in self.days:
+            print(f'Carregando os checks de {day}:')
+            try:
+                with open(f'./data/{day}.json', 'r', encoding='utf-8') as file:
+                    self.checks = json.load(file)
+                    for item in self.checks:
+                        for key, value in item.items():
+                            self.hora = key
+                            self.active = value
+                            app.root.ids[f'{day}'].ids[f'content_{self.hora[:2]}'].ids.check.active = self.active
+            except FileNotFoundError:
+                print(f'checks do dia {day} não encontrado')
+        return True
+
     def on_stop(self):
         super().on_stop()
+
         # todo this is temporary
         print(f'excluindo database')
         drop_database()
+        #
+
+        self.checks = []
+        for day in self.days:
+            print(f'Salvando os checks de {day}:')
+            with open(f'./data/{day}.json', 'w', encoding='utf-8') as file:
+                for hour in range(6, 24):
+                    if hour < 10:
+                        self.checks.append(
+                            {f"0{hour}:00": app.root.ids[f'{day}'].ids[f'content_0{hour}'].ids.check.active}
+                        )
+                    else:
+                        self.checks.append(
+                            {f'{hour}:00': app.root.ids[f'{day}'].ids[f'content_{hour}'].ids.check.active}
+                        )
+
+                json.dump(
+                    self.checks,
+                    file,
+                    indent=2,
+                    ensure_ascii=False
+                )
+            self.checks.clear()
         return True
 
     def build_config(self, config):
