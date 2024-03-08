@@ -1,6 +1,7 @@
 import json
+from json.decoder import JSONDecodeError
 
-from connection import create_database, drop_database
+# from connection import create_database, drop_database
 
 from kivy.lang import Builder
 # from kivy.metrics import dp
@@ -11,12 +12,6 @@ from kivymd.uix.navigationbar import MDNavigationBar, MDNavigationItem
 from pathlib import Path
 
 from kivymd.uix.screenmanager import MDScreenManager
-
-# todo criar uma arquivo json ou cache do kivy
-#  para guardar algumas informações como:
-#  database já criado;
-#  primeiro acesso;
-#  guardar checkpoints
 
 
 class BaseMDNavigationItem(MDNavigationItem):
@@ -48,11 +43,12 @@ class Manager(MDScreenManager):
 
 # class principal
 class MainApp(MDApp):
-    # font_file
     KIVY_HOME = Path(__file__).parent
-    days = ListProperty(['segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sabado', 'domingo'])
+    days = ListProperty(
+        ['segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sabado', 'domingo']
+    )
 
-    first_access = True  # todo esse elemento é provisório
+    first_access = True
 
     # Paleta
     color_font_focus = ColorProperty('#234CAD')
@@ -61,14 +57,21 @@ class MainApp(MDApp):
     background_two = ColorProperty('#2B3347')
     color_font = ColorProperty('#292C33')
 
-    def __init__(self, first_access=True, **kwargs):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.pseud_cache = None
         self.hora: str | None = None  # a hora do check
         self.active: bool | None = None  # o valor do check
         self.checks = None  # listas com os checks salvos
-        if first_access:
-            print('criando database')
-            create_database()
+        try:
+            with open(f'pseud_cache.json', 'r', encoding='utf-8') as file:
+                print('carregando o pseud_cache')
+                self.pseud_cache = json.load(file)
+                self.first_access = self.pseud_cache['first_access']
+        except FileNotFoundError:
+            print(f'pseud_cache: {self.pseud_cache}')
+        except JSONDecodeError:
+            print('o arquivo está vazio!!!')
 
     def on_pause(self):
         super().on_pause()
@@ -89,19 +92,25 @@ class MainApp(MDApp):
                         for key, value in item.items():
                             self.hora = key
                             self.active = value
-                            app.root.ids[f'{day}'].ids[f'content_{self.hora[:2]}'].ids.check.active = self.active
+                            app.root.ids[f'{day}'].ids[f'content_\
+{self.hora[:2]}'].ids.check.active = self.active
             except FileNotFoundError:
                 print(f'checks do dia {day} não encontrado')
+            except JSONDecodeError:
+                print('o arquivo está vazio!!!')
         return True
 
     def on_stop(self):
         super().on_stop()
-
-        # todo this is temporary
-        print(f'excluindo database')
-        drop_database()
-        #
-
+        self.pseud_cache = {'first_access': self.first_access}
+        with open('pseud_cache.json', 'w', encoding='utf-8') as file:
+            print('Salvando o pseud_cache')
+            json.dump(
+                self.pseud_cache,
+                file,
+                ensure_ascii=False,
+                indent=2
+            )
         self.checks = []
         for day in self.days:
             print(f'Salvando os checks de {day}:')
@@ -109,13 +118,14 @@ class MainApp(MDApp):
                 for hour in range(6, 24):
                     if hour < 10:
                         self.checks.append(
-                            {f"0{hour}:00": app.root.ids[f'{day}'].ids[f'content_0{hour}'].ids.check.active}
+                            {f"0{hour}:00": app.root.ids[f'{day}'].ids[f'content\
+_0{hour}'].ids.check.active}
                         )
                     else:
                         self.checks.append(
-                            {f'{hour}:00': app.root.ids[f'{day}'].ids[f'content_{hour}'].ids.check.active}
+                            {f'{hour}:00': app.root.ids[f'{day}'].ids[f'content\
+_{hour}'].ids.check.active}
                         )
-
                 json.dump(
                     self.checks,
                     file,

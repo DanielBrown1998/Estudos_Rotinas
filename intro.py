@@ -11,9 +11,9 @@ Builder.load_file(r'./assets/screens/intro.kv')
 class Check(MDCheckbox):
     def on_checkbox_active(self, checkbox: object, value: object) -> None:
         if value:
-            print('The checkbox', checkbox, 'is active', 'and', checkbox.state, 'state')
+            pass
         else:
-            print('The checkbox', checkbox, 'is inactive', 'and', checkbox.state, 'state')
+            pass
 
 
 class Select(MDBoxLayout):
@@ -33,9 +33,4 @@ class Body(MDSwiper):
 
 
 class Info(MDScreen):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        print(self.name)
-        self.add_widget(
-            Body()
-        )
+    pass
