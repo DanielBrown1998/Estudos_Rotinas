@@ -3,7 +3,7 @@ DAYS = ['segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sabado', 'domingo']
 
 
 def create_database():
-    with sqlite3.connect('data/db.sqlite3') as connection:
+    with sqlite3.connect('../data/db.sqlite3') as connection:
         cursor = connection.cursor()
         for day in DAYS:
             cursor.execute(
@@ -17,7 +17,7 @@ def create_database():
 
 
 def drop_database():
-    with sqlite3.connect('data/db.sqlite3') as connection:
+    with sqlite3.connect('../data/db.sqlite3') as connection:
         cursor = connection.cursor()
         for day in DAYS:
             cursor.execute(
@@ -28,7 +28,7 @@ def drop_database():
 
 def consult_database(day: str) -> list:
     data = []
-    with sqlite3.connect('data/db.sqlite3') as connection:
+    with sqlite3.connect('../data/db.sqlite3') as connection:
         cursor = connection.cursor()
         cursor.execute(
             f"SELECT * FROM {day}"
@@ -40,7 +40,7 @@ def consult_database(day: str) -> list:
 
 def update_database(day: str, hour: int, texto: str) -> None:
 
-    with sqlite3.connect('data/db.sqlite3') as connection:
+    with sqlite3.connect('../data/db.sqlite3') as connection:
         cursor = connection.cursor()
         cursor.execute(
             f'UPDATE TABLE {day} SET texto = ? WHERE hour = ?',
@@ -50,7 +50,7 @@ def update_database(day: str, hour: int, texto: str) -> None:
 
 
 def insert_table(day: str, hour: int, texto: str) -> None:
-    with sqlite3.connect('data/db.sqlite3') as connection:
+    with sqlite3.connect('../data/db.sqlite3') as connection:
         cursor = connection.cursor()
         cursor.execute(
             f"INSERT INTO {day} (texto) VALUES ? where hour=?",

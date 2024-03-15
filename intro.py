@@ -21,7 +21,7 @@ class Select(MDBoxLayout):
 
 
 class Config(MDSwiperItem):
-    ...
+    pass
 
 
 class MySwiper(MDSwiperItem):
@@ -29,7 +29,7 @@ class MySwiper(MDSwiperItem):
 
 
 class Body(MDSwiper):
-    image = StringProperty()
+    pass
 
 
 class Info(MDScreen):

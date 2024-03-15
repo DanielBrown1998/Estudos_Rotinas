@@ -9,12 +9,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8df999a6-b8d5-4d7f-bd73-51999ac5ae63" name="Changes" comment="adicionando: requirements.txt">
+      <change afterPath="$PROJECT_DIR$/utils/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/screens/intro.kv" beforeDir="false" afterPath="$PROJECT_DIR$/assets/screens/intro.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/connection.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/data/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/domingo.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/domingo.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/quarta.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/quarta.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/quinta.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/quinta.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/sabado.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/sabado.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/segunda.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/segunda.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/sexta.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/sexta.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/terça.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/terça.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/intro.py" beforeDir="false" afterPath="$PROJECT_DIR$/intro.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tabs.py" beforeDir="false" afterPath="$PROJECT_DIR$/tabs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pseud_cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/pseud_cache.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +41,20 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "DanielBrown1998"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="64302d3e-0e25-47f1-a63f-4a53b4df1b2c" />
+        <option name="url" value="https://github.com/DanielBrown1998/Estudos_Rotinas.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -40,31 +64,54 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
-    &quot;Python.build.executor&quot;: &quot;Run&quot;,
-    &quot;Python.connection.executor&quot;: &quot;Run&quot;,
-    &quot;Python.cronogram.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.tabs.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "Python.__init__.executor": "Run",
+    "Python.build.executor": "Run",
+    "Python.connection.executor": "Run",
+    "Python.cronogram.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.tabs.executor": "Run",
+    "Python.test.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Danie\OneDrive\Documentos\GitHub\Estudos_Rotinas\utils" />
       <recent name="C:\Users\Danie\OneDrive\Documentos\GitHub\Estudos_Rotinas\data" />
       <recent name="C:\Users\Danie\OneDrive\Documentos\GitHub\Estudos_Rotinas" />
       <recent name="C:\Users\Danie\OneDrive\Documentos\GitHub\Estudos_Rotinas\assets\screens" />
       <recent name="C:\Users\Danie\OneDrive\Documentos\GitHub\Estudos_Rotinas\assets\kv_files" />
-      <recent name="C:\Users\Danie\OneDrive\Documentos\GitHub\Estudos_Rotinas\assets\kv_files\screens" />
     </key>
   </component>
   <component name="RunManager" selected="Python.main">
+    <configuration name="__init__" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Estudos_Rotinas" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/utils/__init__.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="build" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Estudos_Rotinas" />
       <option name="ENV_FILES" value="" />
@@ -87,28 +134,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="builder" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Estudos_Rotinas" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/assets/kv_files/screens" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\Danie\OneDrive\Documentos\GitHub\Estudos_Rotinas\assets\kv_files\builder.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="connection" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Estudos_Rotinas" />
       <option name="ENV_FILES" value="" />
@@ -122,7 +147,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/connection.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Danie\OneDrive\Documentos\GitHub\Estudos_Rotinas\utils\connection.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -199,11 +224,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.__init__" />
         <item itemvalue="Python.tabs" />
         <item itemvalue="Python.connection" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.build" />
-        <item itemvalue="Python.builder" />
       </list>
     </recent_temporary>
   </component>

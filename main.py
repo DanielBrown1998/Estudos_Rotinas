@@ -1,3 +1,4 @@
+import datetime
 import json
 from json.decoder import JSONDecodeError
 
@@ -49,6 +50,7 @@ class MainApp(MDApp):
     )
 
     first_access = True
+    clean_checks_weekday: int = 0  # segunda
 
     # Paleta
     color_font_focus = ColorProperty('#234CAD')
@@ -59,17 +61,26 @@ class MainApp(MDApp):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.pseud_cache = None
-        self.hora: str | None = None  # a hora do check
-        self.active: bool | None = None  # o valor do check
-        self.checks = None  # listas com os checks salvos
+        self.pseud_cache = None  # local onde ficara armazenado o 'cache'
+        self.hora: str | None = None  # a hora do elemento
+        self.attr: tuple | None = None  # o valor do check e texto
+        self.attrs = None  # listas com os checks e textos salvos
+
+        self.day = datetime.datetime.today().strftime("%d/%m/%Y")
+        self.weekday = datetime.datetime.weekday(datetime.datetime.today())
+        if self.weekday != 0:
+            self.weekday = 7 - self.weekday
+            self.clean_checks_day = str(int(self.day[:2]) + self.weekday) + self.day[2:]
+            print(self.clean_checks_day)
         try:
-            with open(f'pseud_cache.json', 'r', encoding='utf-8') as file:
+            with open(f'data/pseud_cache.json', 'r', encoding='utf-8') as file:
                 print('carregando o pseud_cache')
                 self.pseud_cache = json.load(file)
                 self.first_access = self.pseud_cache['first_access']
         except FileNotFoundError:
-            print(f'pseud_cache: {self.pseud_cache}')
+            print('arquivo nçao encontrado')
+            print(self.day)
+            print(self.clean_checks_day)
         except JSONDecodeError:
             print('o arquivo está vazio!!!')
 
@@ -83,27 +94,66 @@ class MainApp(MDApp):
 
     def on_start(self):
         super().on_start()
-        for day in self.days:
-            print(f'Carregando os checks de {day}:')
-            try:
-                with open(f'./data/{day}.json', 'r', encoding='utf-8') as file:
-                    self.checks = json.load(file)
-                    for item in self.checks:
-                        for key, value in item.items():
-                            self.hora = key
-                            self.active = value
-                            app.root.ids[f'{day}'].ids[f'content_\
-{self.hora[:2]}'].ids.check.active = self.active
-            except FileNotFoundError:
-                print(f'checks do dia {day} não encontrado')
-            except JSONDecodeError:
-                print('o arquivo está vazio!!!')
+        if datetime.datetime.today().strftime('%d/%m/%Y') >= self.clean_checks_day:
+            return True
+        else:
+            for day in self.days:
+                print(f'Carregando os atributos de {day}:')
+                try:
+                    with open(f'./data/{day}.json', 'r', encoding='utf-8') as file:
+                        self.attrs = json.load(file)
+                        for item in self.attrs:
+                            for key, value in item.items():
+                                self.hora = key
+                                self.attr = value
+                                app.root.ids[f'{day}'].ids[f'content_\
+{self.hora[:2]}'].ids.check.active = self.attr[0]
+                                app.root.ids[f'{day}'].ids[f'content_\
+{self.hora[:2]}'].ids.texto.text = self.attr[1]
+                except FileNotFoundError:
+                    print(f'checks do dia {day} não encontrado')
+                except JSONDecodeError:
+                    print('o arquivo está vazio!!!')
         return True
 
     def on_stop(self):
         super().on_stop()
-        self.pseud_cache = {'first_access': self.first_access}
-        with open('pseud_cache.json', 'w', encoding='utf-8') as file:
+        self.attrs = []
+        for day in self.days:
+            print(f'Salvando os dados de {day}:')
+            with open(f'./data/{day}.json', 'w', encoding='utf-8') as file:
+                for hour in range(6, 24):
+                    if hour < 10:
+                        self.attrs.append(
+                            {
+                                f"0{hour}:00": (
+                                    app.root.ids[f'{day}'].ids[f'content_0{hour}'].ids.check.active,
+                                    app.root.ids[f'{day}'].ids[f'content_0{hour}'].ids.texto.text
+                                )
+                            }
+                        )
+                    else:
+                        self.attrs.append(
+                            {
+                                f'{hour}:00': (
+                                    app.root.ids[f'{day}'].ids[f'content_{hour}'].ids.check.active,
+                                    app.root.ids[f'{day}'].ids[f'content_{hour}'].ids.texto.text
+                                )
+                            }
+                        )
+                json.dump(
+                    self.attrs,
+                    file,
+                    indent=2,
+                    ensure_ascii=False
+                )
+            self.attrs.clear()
+
+        self.pseud_cache = {
+            'first_access': self.first_access,
+            'clean_checks_day': self.clean_checks_day
+        }
+        with open('data/pseud_cache.json', 'w', encoding='utf-8') as file:
             print('Salvando o pseud_cache')
             json.dump(
                 self.pseud_cache,
@@ -111,28 +161,7 @@ class MainApp(MDApp):
                 ensure_ascii=False,
                 indent=2
             )
-        self.checks = []
-        for day in self.days:
-            print(f'Salvando os checks de {day}:')
-            with open(f'./data/{day}.json', 'w', encoding='utf-8') as file:
-                for hour in range(6, 24):
-                    if hour < 10:
-                        self.checks.append(
-                            {f"0{hour}:00": app.root.ids[f'{day}'].ids[f'content\
-_0{hour}'].ids.check.active}
-                        )
-                    else:
-                        self.checks.append(
-                            {f'{hour}:00': app.root.ids[f'{day}'].ids[f'content\
-_{hour}'].ids.check.active}
-                        )
-                json.dump(
-                    self.checks,
-                    file,
-                    indent=2,
-                    ensure_ascii=False
-                )
-            self.checks.clear()
+
         return True
 
     def build_config(self, config):
