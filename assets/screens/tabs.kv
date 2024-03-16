@@ -86,7 +86,10 @@
     halign: 'left'
     valign: 'center'
     theme_text_color: 'Custom'
-    text_color: get_color_from_hex('#111111')
+    text_color:
+        get_color_from_hex('#111111') \
+        if app.theme_cls.theme_style == 'Light' \
+        else get_color_from_hex("#FFFFFF")
     bold: True
 
 <Check>
@@ -138,7 +141,11 @@
     Scroll:
         do_scroll_x: True
         do_scroll_y: True
+
         Day:
+            md_bg_color:
+                app.background if app.theme_cls.theme_style == 'Light' \
+                else get_color_from_hex("#111111")
             width: Window.size[0]
             Disciplina:
                 id: seis

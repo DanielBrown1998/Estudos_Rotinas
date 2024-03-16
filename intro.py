@@ -1,6 +1,8 @@
 from kivy.lang import Builder
-from kivy.properties import StringProperty
+from kivy.properties import StringProperty, ListProperty, ColorProperty
 from kivymd.uix.boxlayout import MDBoxLayout
+from kivymd.uix.chip import MDChip
+from kivymd.uix.list import MDListItem
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.selectioncontrol import MDCheckbox
 from kivymd.uix.swiper import MDSwiper, MDSwiperItem
@@ -8,12 +10,14 @@ from kivymd.uix.swiper import MDSwiper, MDSwiperItem
 Builder.load_file(r'./assets/screens/intro.kv')
 
 
-class Check(MDCheckbox):
-    def on_checkbox_active(self, checkbox: object, value: object) -> None:
-        if value:
-            pass
-        else:
-            pass
+class Item(MDListItem):
+    icon = StringProperty()
+    principal_text = StringProperty()
+    support_text = StringProperty()
+
+
+class Dados(MDChip):
+    dados_color = ColorProperty()
 
 
 class Select(MDBoxLayout):
@@ -21,6 +25,10 @@ class Select(MDBoxLayout):
 
 
 class Config(MDSwiperItem):
+    pass
+
+
+class Intro(MDSwiperItem):
     pass
 
 

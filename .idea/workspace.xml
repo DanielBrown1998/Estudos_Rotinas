@@ -9,22 +9,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8df999a6-b8d5-4d7f-bd73-51999ac5ae63" name="Changes" comment="adicionando: requirements.txt">
-      <change afterPath="$PROJECT_DIR$/utils/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/screens/intro.kv" beforeDir="false" afterPath="$PROJECT_DIR$/assets/screens/intro.kv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/connection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/data/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/domingo.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/domingo.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/quarta.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/quarta.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/quinta.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/quinta.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/sabado.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/sabado.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/segunda.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/segunda.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/sexta.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/sexta.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/terça.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/terça.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/intro.py" beforeDir="false" afterPath="$PROJECT_DIR$/intro.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pseud_cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/pseud_cache.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,12 +30,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "DanielBrown1998"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;DanielBrown1998&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -64,22 +53,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "Python.__init__.executor": "Run",
-    "Python.build.executor": "Run",
-    "Python.connection.executor": "Run",
-    "Python.cronogram.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.tabs.executor": "Run",
-    "Python.test.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;Python.__init__.executor&quot;: &quot;Run&quot;,
+    &quot;Python.build.executor&quot;: &quot;Run&quot;,
+    &quot;Python.connection.executor&quot;: &quot;Run&quot;,
+    &quot;Python.cronogram.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.tabs.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Danie\OneDrive\Documentos\GitHub\Estudos_Rotinas\utils" />

@@ -1,4 +1,5 @@
 #:import Tabs tabs.Tabs
+#:import get_color_from_hex kivy.utils.get_color_from_hex
 #:import Info intro.Info
 
 <BaseMDNavigationItem>
@@ -33,7 +34,9 @@
         opacity: .6
     Manager:
         id: screen_manager
-        md_bg_color: app.background
+        md_bg_color:
+            app.background if app.theme_cls.theme_style == 'Light' \
+            else get_color_from_hex("#111111")
         Info:
             name: app.title
         Tabs:

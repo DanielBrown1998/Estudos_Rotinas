@@ -1,17 +1,12 @@
 import datetime
 import json
 from json.decoder import JSONDecodeError
-
-# from connection import create_database, drop_database
-
 from kivy.lang import Builder
-# from kivy.metrics import dp
 from kivy.properties import StringProperty, ColorProperty, ListProperty
 from kivymd.app import MDApp
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.navigationbar import MDNavigationBar, MDNavigationItem
 from pathlib import Path
-
 from kivymd.uix.screenmanager import MDScreenManager
 
 
@@ -51,6 +46,8 @@ class MainApp(MDApp):
 
     first_access = True
     clean_checks_weekday: int = 0  # segunda
+    delete: bool = False
+
 
     # Paleta
     color_font_focus = ColorProperty('#234CAD')
@@ -66,6 +63,7 @@ class MainApp(MDApp):
         self.attr: tuple | None = None  # o valor do check e texto
         self.attrs = None  # listas com os checks e textos salvos
 
+        # calculando o dia de
         self.day = datetime.datetime.today().strftime("%d/%m/%Y")
         self.weekday = datetime.datetime.weekday(datetime.datetime.today())
         if self.weekday != 0:
@@ -77,6 +75,7 @@ class MainApp(MDApp):
                 print('carregando o pseud_cache')
                 self.pseud_cache = json.load(file)
                 self.first_access = self.pseud_cache['first_access']
+                self.clean_checks_day_cache = self.pseud_cache['clean_checks_day']
         except FileNotFoundError:
             print('arquivo nçao encontrado')
             print(self.day)
@@ -86,16 +85,36 @@ class MainApp(MDApp):
 
     def on_pause(self):
         super().on_pause()
+        self.on_stop()
         return True
 
     def on_resume(self):
         super().on_resume()
+        self.on_start()
         return True
 
     def on_start(self):
         super().on_start()
-        if datetime.datetime.today().strftime('%d/%m/%Y') >= self.clean_checks_day:
-            return True
+        self.fps_monitor_start()
+        if self.day >= self.clean_checks_day_cache:
+            for day in self.days:
+                print(f'Carregando os atributos de {day}:')
+                try:
+                    with open(f'./data/{day}.json', 'r', encoding='utf-8') as file:
+                        self.attrs = json.load(file)
+                        for item in self.attrs:
+                            for key, value in item.items():
+                                self.hora = key
+                                self.attr = value
+                                app.root.ids[f'{day}'].ids[f'content_\
+{self.hora[:2]}'].ids.check.active = False
+                                app.root.ids[f'{day}'].ids[f'content_\
+{self.hora[:2]}'].ids.texto.text = self.attr[1]
+                except FileNotFoundError:
+                    print(f'checks do dia {day} não encontrado')
+                except JSONDecodeError:
+                    print('o arquivo está vazio!!!')
+
         else:
             for day in self.days:
                 print(f'Carregando os atributos de {day}:')
@@ -172,6 +191,53 @@ class MainApp(MDApp):
         from datetime import datetime
         day = datetime.weekday(datetime.today())
         return self.days[day]
+
+    def restore_data(self) -> str:
+        if self.delete is True:
+            for day in self.days:
+                print(f'Carregando os atributos de {day}:')
+                try:
+                    with open(f'./data/{day}.json', 'r', encoding='utf-8') as file:
+                        self.attrs = json.load(file)
+                        for item in self.attrs:
+                            for key, value in item.items():
+                                self.hora = key
+                                self.attr = value
+                                app.root.ids[f'{day}'].ids[f'content_\
+{self.hora[:2]}'].ids.check.active = self.attr[0]
+                                app.root.ids[f'{day}'].ids[f'content_\
+{self.hora[:2]}'].ids.texto.text = self.attr[1]
+                except FileNotFoundError:
+                    print('não há dados para restaurar')
+                    return 'não há dados para restaurar'
+                except JSONDecodeError:
+                    print('não há dados para restaurar')
+                    return 'não há dados para restaurar'
+            self.delete = False
+            print('dados recuperados')
+            return 'dados recuperados'
+        print('os dados não foram recuperados')
+        return 'os dados não foram excluídos'
+
+    def delete_data(self) -> str:
+        if self.delete is False:
+            for day in self.days:
+                for hora in range(6, 24):
+                    if hora < 10:
+                        app.root.ids[f'{day}'].ids[f'content_0\
+{hora}'].ids.check.active = False
+                        app.root.ids[f'{day}'].ids[f'content_0\
+{hora}'].ids.texto.text = ''
+                    else:
+                        app.root.ids[f'{day}'].ids[f'content_\
+{hora}'].ids.check.active = False
+                        app.root.ids[f'{day}'].ids[f'content_\
+{hora}'].ids.texto.text = ''
+            self.delete = True
+            print('arquivos deletados')
+            return 'arquivos deletados'
+        print('arquivos já foram deletados')
+        return 'arquivos já foram deletados'
 
     def on_switch_tabs(
             self,
