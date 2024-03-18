@@ -32,7 +32,7 @@ build
 dist
 bin
 .buildozer
-data/*
+data
 
 # Logs
 *.log
