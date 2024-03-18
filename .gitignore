@@ -32,6 +32,7 @@ build
 dist
 bin
 .buildozer
+data/*
 
 # Logs
 *.log
@@ -69,4 +70,3 @@ temp
 /kivymd/tools/release/*.zip
 /kivymd/tools/release/temp
 .idea/
-data/
