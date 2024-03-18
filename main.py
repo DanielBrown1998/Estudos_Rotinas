@@ -47,7 +47,7 @@ class MainApp(MDApp):
     first_access = True
     clean_checks_weekday: int = 0  # segunda
     delete: bool = False
-
+    theme: str | None = 'Light'
 
     # Paleta
     color_font_focus = ColorProperty('#234CAD')
@@ -62,22 +62,28 @@ class MainApp(MDApp):
         self.hora: str | None = None  # a hora do elemento
         self.attr: tuple | None = None  # o valor do check e texto
         self.attrs = None  # listas com os checks e textos salvos
-
-        # calculando o dia de
         self.day = datetime.datetime.today().strftime("%d/%m/%Y")
         self.weekday = datetime.datetime.weekday(datetime.datetime.today())
-        if self.weekday != 0:
-            self.weekday = 7 - self.weekday
-            self.clean_checks_day = str(int(self.day[:2]) + self.weekday) + self.day[2:]
-            print(self.clean_checks_day)
+        self.clean_checks_day = None
         try:
             with open(f'data/pseud_cache.json', 'r', encoding='utf-8') as file:
                 print('carregando o pseud_cache')
                 self.pseud_cache = json.load(file)
-                self.first_access = self.pseud_cache['first_access']
-                self.clean_checks_day_cache = self.pseud_cache['clean_checks_day']
+                try:
+                    self.first_access = self.pseud_cache['first_access']
+                except KeyError as error:
+                    print(f'{error.args} não encontrado')
+                try:
+                    self.theme = self.pseud_cache['theme']
+                except KeyError as error:
+                    print(f'{error.args} não encontrado')
+                try:
+                    self.clean_checks_day_cache = self.pseud_cache['clean_checks_day']
+                except KeyError:
+                    print(f'{error.args} não encontrado')
+
         except FileNotFoundError:
-            print('arquivo nçao encontrado')
+            print('arquivo não encontrado')
             print(self.day)
             print(self.clean_checks_day)
         except JSONDecodeError:
@@ -133,6 +139,12 @@ class MainApp(MDApp):
                     print(f'checks do dia {day} não encontrado')
                 except JSONDecodeError:
                     print('o arquivo está vazio!!!')
+
+        # calculando o dia de apagar os checks
+        self.weekday = 7 - self.weekday
+        self.clean_checks_day = str(int(self.day[:2]) + self.weekday) + self.day[2:]
+        print(self.clean_checks_day)
+
         return True
 
     def on_stop(self):
@@ -170,7 +182,8 @@ class MainApp(MDApp):
 
         self.pseud_cache = {
             'first_access': self.first_access,
-            'clean_checks_day': self.clean_checks_day
+            'clean_checks_day': self.clean_checks_day,
+            'theme': self.theme_cls.theme_style
         }
         with open('data/pseud_cache.json', 'w', encoding='utf-8') as file:
             print('Salvando o pseud_cache')
@@ -249,7 +262,7 @@ class MainApp(MDApp):
         self.root.ids.screen_manager.current = item_text
 
     def build(self):
-        self.theme_cls.theme_style = 'Light'
+        self.theme_cls.theme_style = self.theme
         self.theme_cls.material_style = 'M3'
         self.theme_cls.dynamic_color = True
         self.title = 'Studie'
