@@ -1,10 +1,9 @@
 from kivy.lang import Builder
-from kivy.properties import StringProperty, ListProperty, ColorProperty
+from kivy.properties import StringProperty, ColorProperty
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.chip import MDChip
 from kivymd.uix.list import MDListItem
 from kivymd.uix.screen import MDScreen
-from kivymd.uix.selectioncontrol import MDCheckbox
 from kivymd.uix.swiper import MDSwiper, MDSwiperItem
 
 Builder.load_file(r'./assets/screens/intro.kv')

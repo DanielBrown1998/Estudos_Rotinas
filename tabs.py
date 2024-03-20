@@ -59,10 +59,7 @@ class Texto(MDLabel):
 class Check(MDCheckbox):
 
     def on_checkbox_active(self, checkbox: object, value: object) -> None:
-        if value:
-            pass
-        else:
-            pass
+        pass
 
 
 class Content(MDRelativeLayout):

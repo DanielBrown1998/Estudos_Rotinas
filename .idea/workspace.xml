@@ -11,6 +11,12 @@
     <list default="true" id="8df999a6-b8d5-4d7f-bd73-51999ac5ae63" name="Changes" comment="refactor: 'alterando o gitignore'">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/introjpg-0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/introjpg.atlas" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/intro.py" beforeDir="false" afterPath="$PROJECT_DIR$/intro.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs.py" beforeDir="false" afterPath="$PROJECT_DIR$/tabs.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,10 +69,14 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Danie/OneDrive/Documentos/GitHub/Estudos_Rotinas/deploy&quot;
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Danie\OneDrive\Documentos\GitHub\Estudos_Rotinas\deploy" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Danie\OneDrive\Documentos\GitHub\Estudos_Rotinas\utils" />
       <recent name="C:\Users\Danie\OneDrive\Documentos\GitHub\Estudos_Rotinas\data" />
@@ -306,7 +316,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710784892534</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="refactor: 'alterando o gitignore'">
+      <option name="closed" value="true" />
+      <created>1710785234286</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1710785234286</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
