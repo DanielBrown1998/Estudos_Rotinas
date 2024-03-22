@@ -32,12 +32,19 @@ class Manager(MDScreenManager):
 # class principal
 class MainApp(MDApp):
     KIVY_HOME = Path(__file__).parent
+
+    # dias da semana
     days = ListProperty(
         ['segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sabado', 'domingo']
     )
 
+    # inicia as variáveis de classe
     first_access = True
+
+    # verifica se os dados json foram todos excluídos
     delete: bool = False
+
+    # carrega o tema padrão a ser utilizado
     theme: str | None = 'Light'
 
     # Paleta
@@ -53,9 +60,9 @@ class MainApp(MDApp):
         self.hora: str | None = None  # a hora do elemento
         self.attr: tuple | None = None  # o valor do check e texto
         self.attrs = None  # listas com os checks e textos salvos
-        self.day = datetime.datetime.today().strftime("%d/%m/%Y")
-        self.weekday = datetime.datetime.weekday(datetime.datetime.today())
-        self.clean_checks_day = None
+        self.day = datetime.datetime.today().strftime("%d/%m/%Y")  # verifica o dia de hoje
+        self.weekday = datetime.datetime.weekday(datetime.datetime.today())  # verifica o dia da semana
+        self.clean_checks_day: str | None = None  # dia que os checks das tarefas serão apagados
         try:
             with open(f'data/pseud_cache.json', 'r', encoding='utf-8') as file:
                 self.pseud_cache = json.load(file)

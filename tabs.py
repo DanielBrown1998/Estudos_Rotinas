@@ -81,10 +81,18 @@ class Disciplina(
     scale_value_y = NumericProperty(1)
     scale_value_z = NumericProperty(1)
 
+    # busca a nome da screen em vigência
     def change(self):
         return self.parent.change()
 
     def on_long_touch(self, touch, *args):
+        """
+        Apaga os dados contidos no widget
+
+        :param touch:
+        :param args:
+        :return:
+        """
         anim = (
             Animation(
                 scale_value_x=1.01,
@@ -105,17 +113,20 @@ class Disciplina(
 
 
 class Day(MDStackLayout):
+    # busca a nome da screen em vigência
     def change(self):
         return self.parent.change()
 
 
 class Scroll(MDScrollView):
 
+    # busca a nome da screen em vigência
     def change(self):
         return self.parent.change()
 
 
 class Tabs(MDScreen):
 
+    # busca a nome da screen em vigência
     def change(self):
         return self.name
